@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+  flask:
+    build: .
+    command: "python app.py"
+    restart: always
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./code/:/app
+    networks:
+      - flask-redis-celery
+
+  celery:
+    build: .
+    command: "celery -A app.celery worker --loglevel=info"
+    user: nobody
+    restart: always
+    volumes:
+      - ./code/:/app
+    networks:
+      - flask-redis-celery
+
+  redis:
+    image: 'redis:3.2.9-alpine'
+    command: redis-server --requirepass ln_pwd_123
+    volumes:
+      - redis:/data
+    networks:
+      - flask-redis-celery
+
+volumes:
+    redis:
+
+networks:
+    flask-redis-celery:
