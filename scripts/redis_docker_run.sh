@@ -1,5 +1,4 @@
-REDIS_PWD=ln_pwd_123
-REDIS_VERSION=3.2.9
+REDIS_VERSION=4.0.1
 
 docker run -tdi \
 --name redis \
