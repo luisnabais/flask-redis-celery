@@ -4,7 +4,7 @@
 Skeleton Flask app for Redis and Celery use.
 
 #### **Code**
-Code tested with Python 3.6.1.
+Code tested with Python 3.6.2.
 
 #### **Start App Manually**
 This app is prepared to be used both in Docker containers and manually in your system, with or without a virtual environment. Feel free to use it on any way you like.
